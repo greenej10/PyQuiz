@@ -6,70 +6,71 @@ questions = [
 ]
 
 options = [
-    ["Java", "Ruby ", "Python", "Chennai"],
+    ["Java", "Ruby ", "Python", "Perl"],
     ["Delhi", "Mumbai", "Chennai", "Kanyakumari"],
 ]
 
-a = [1, 4]
+a = [3, 4]
 
 class Quizlet:
     def __init__(self, master):
-        self.opt_selected = IntVar()
-        self.qn = 0
-        self.correct = 0
-        self.ques = self.create_q(master, self.qn)
-        self.opts = self.create_options(master, 4)
-        self.display_q(self.qn)
+        self.answer_choice = IntVar()
+        self.question_number = 0
+        self.num_correct = 0
+        self.question = self.question_maker(master, self.question_number)
+        self.options = self.option_maker(master, 4)
+        self.show_question(self.question_number)
         self.button = Button(master, text="Back", command=self.back_btn)
         self.button.pack(side=BOTTOM)
         self.button = Button(master, text="Next", command=self.next_btn)
         self.button.pack(side=BOTTOM)
 
-    def create_q(self, master, qn):
-        w = Label(master, text=questions[qn])
-        w.pack(side=TOP)
-        return w
+    def question_maker(self, master, question):
+        prompt = Label(master, text=questions[question])
+        prompt.pack(side=TOP)
+        prompt.config(font=("Courier", 16))
+        return prompt
 
-    def create_options(self, master, n):
+    def option_maker(self, master, n):
         b_val = 0
         b = []
         while b_val < n:
-            btn = Radiobutton(master, text="foo", variable=self.opt_selected, value=b_val+1)
+            btn = Radiobutton(master, text="foo", variable=self.answer_choice, value=b_val + 1)
             b.append(btn)
             btn.pack(side=TOP, anchor="w")
             b_val = b_val + 1
         return b
 
-    def display_q(self, qn):
+    def show_question(self, question):
         b_val = 0
-        self.opt_selected.set(0)
-        self.ques['text'] = questions[qn]
-        for op in options[qn]:
-            self.opts[b_val]['text'] = op
+        self.answer_choice.set(0)
+        self.question['text'] = questions[question]
+        for option in options[question]:
+            self.options[b_val]['text'] = option
             b_val = b_val + 1
 
     def check_q(self, qn):
-        if self.opt_selected.get() == a[qn]:
+        if self.answer_choice.get() == a[qn]:
             return True
         return False
 
     def print_results(self):
-        print("Score: ", self.correct, "/", len(questions))
+        print("Score: ", self.num_correct, "/", len(questions))
 
     def back_btn(self):
         print("go back")
 
     def next_btn(self):
-        if self.check_q(self.qn):
+        if self.check_q(self.question_number):
             print("Correct")
-            self.correct += 1
+            self.num_correct += 1
         else:
             print("Wrong")
-        self.qn = self.qn + 1
-        if self.qn >= len(questions):
+        self.question_number = self.question_number + 1
+        if self.question_number >= len(questions):
             self.print_results()
         else:
-            self.display_q(self.qn)
+            self.show_question(self.question_number)
 
 
 root = Tk()
