@@ -29,11 +29,13 @@ class Quizlet:
         self.question = self.question_maker(master, self.question_number)
         self.options = self.option_maker(master, 4)
         self.show_question(self.question_number)
-        self.description= Message(master, text="")
+        self.check = Message(master, text="", width=100)
+        self.check.pack()
+        self.description= Message(master, text="", width=200)
         self.description.pack()
-        self.button = Button(master, text="Back", command=self.back_btn)
+        self.button = Button(master, text="Check Answer", command=self.check_btn)
         self.button.pack(side=BOTTOM)
-        self.button = Button(master, text="Next", command=self.next_btn)
+        self.button = Button(master, text="Next Question", command=self.next_btn)
         self.button.pack(side=BOTTOM)
 
     def question_maker(self, master, question):
@@ -87,7 +89,11 @@ class Quizlet:
 
     def print_results(self):
         messagebox.showinfo("Score: ", "You got : " + str(self.num_correct) + "/" + str(len(questions)))
-    def back_btn(self):
+    def check_btn(self):
+        if self.answer_check(self.question_number):
+            self.check.config(text="CORRECT!")
+        else:
+            self.check.config(text="INCORRECT!")
         self.description_maker(root)
 
     def next_btn(self):
@@ -95,7 +101,10 @@ class Quizlet:
             print("Correct")
             self.num_correct += 1
             self.description.config(text="")
+            self.check.config(text="")
         else:
+            self.description.config(text="")
+            self.check.config(text="")
             print("Wrong")
         self.question_number = self.question_number + 1
         if self.question_number >= len(questions):

@@ -17,8 +17,8 @@
       <file leaf-file-name="Quizlet.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PythonQuizlet/Quizlet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="113" column="10" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="115" selection-end-column="15" />
+            <state relative-caret-position="376">
+              <caret line="35" column="81" lean-forward="true" selection-start-line="35" selection-start-column="81" selection-end-line="35" selection-end-column="81" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -172,8 +172,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/PythonQuizlet/Quizlet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="113" column="10" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="115" selection-end-column="15" />
+        <state relative-caret-position="376">
+          <caret line="35" column="81" lean-forward="true" selection-start-line="35" selection-start-column="81" selection-end-line="35" selection-end-column="81" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
