@@ -33,10 +33,11 @@ class Quizlet:
         self.check.pack()
         self.description= Message(master, text="", width=200)
         self.description.pack()
-        self.button = Button(master, text="Check Answer", command=self.check_btn)
-        self.button.pack(side=BOTTOM)
         self.button = Button(master, text="Next Question", command=self.next_btn)
         self.button.pack(side=BOTTOM)
+        self.button = Button(master, text="Check Answer", command=self.check_btn)
+        self.button.pack(side=BOTTOM)
+
 
     def question_maker(self, master, question):
         prompt = Label(master, text=questions[question])
