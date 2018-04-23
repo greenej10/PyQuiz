@@ -103,7 +103,7 @@ class Quizlet:
 
 
     def question_maker(self, master, question):
-        prompt = Label(master, text=questions[question], width=600)
+        prompt = Message(master, text=questions[question], width=600)
         prompt.pack(side=TOP)
         prompt.config(font=("Courier", 16), width=600)
         return prompt
@@ -120,7 +120,7 @@ class Quizlet:
 
 
     def answer_maker(self, master, answer, description):
-        prompt = Label(master, text=answers[answer])
+        prompt = Message(master, text=answers[answer])
         prompt.pack(side=TOP, width=700)
         prompt.config(font=("Courier", 16))
         description= Message(master, text= descriptions[description])
@@ -179,7 +179,7 @@ class Quizlet:
 
 
 root = Tk()
-# root.geometry("800x600")
+root.geometry("800x600")
 menu= Menu(root)
 logo =  PhotoImage(file="python-logo.png")
 title = Label(root, image=logo)
